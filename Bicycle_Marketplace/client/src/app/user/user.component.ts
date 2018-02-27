@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../user/user.service";
 import {Router} from "@angular/router";
-// import {User} from 
+
 
 
 @Component({
@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
     private loggedIn:any;
 
     constructor(private router:Router,private us:UserService){
-
+    
     }
 
     register(){
@@ -25,8 +25,10 @@ export class UserComponent implements OnInit {
                 localStorage.setItem("user",data._id);
                 this.router.navigate(["/browse"]);
             }
-          });
-        }  
+        });
+    }
+
+
     login(){
       this.us.login(this.loggedIn,(data)=>{
         if(data.errors){

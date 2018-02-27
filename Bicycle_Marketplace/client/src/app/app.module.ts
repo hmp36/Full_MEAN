@@ -3,12 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
-
 import { SearchPipe } from './pipes/search.pipe';
-
 import { UserService } from "./user/user.service";
 import { ListingService } from "./listing.service";
-
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { NavComponent } from './nav/nav.component';

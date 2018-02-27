@@ -1,20 +1,19 @@
+LIsting Component 
+
+
+
 <div class="flex">
-  <img src="{{listing.src}}" width="200" height="200">
+    <img src="http://www.mongoose.com/media/catalog/product/m/1/m13_CHA20_fir_9.1348673432.png" width="200"
+    height="200">  
+  <h1>Title</h1>
 
-  <h1>{{listing.title}}</h1>
+  <p>Body Content Here</p>
 
-  <p>{{listing.description}}</p>
+  <h1>Cost $$$</h1>
 
-  <h1>${{listing.price}}</h1>
-
-  <p>{{listing.location}}</p>
-
-  <form *ngIf="listing.user._id == user" (submit)="destroy()">
-    <input type="submit" value="DELETE">
+  <p>Location</p>
+  <form>
+    Delete
   </form>
 
-  <form *ngIf="listing.user._id != user" (submit)="contact(listing.user)">
-    <input type="submit" value="CONTACT">
-  </form>
-
-</div>
+</div> 

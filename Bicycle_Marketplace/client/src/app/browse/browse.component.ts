@@ -8,7 +8,8 @@ import {UserService} from "../user/user.service";
   styleUrls: ['./browse.component.css']
 })
 export class BrowseComponent implements OnInit {
-
+  private text:String;
+  
   constructor(private us:UserService, private router:Router){
 
    }
