@@ -18,11 +18,17 @@ export class NoteService {
             }
         );
     };
+    // create(data){
+    //     this._http.post('/notes', data)
+    // }
 
     create(data, callback) {
+        console.log("jukytkynryryjrtyjtryjetjete");
+        
         this._http.post('/notes', data).subscribe(
             (res) => {
-                callback(res.json());
+                console.log("Jonathan is awesome")
+                callback(data);
             },
             (err) => {
                 console.log(err);

@@ -9,6 +9,7 @@ import { ListingService } from "../listing.service";
 })
 
 export class ListingComponent implements OnInit {
+  
   @Input() listing;
   @Input() user;
 

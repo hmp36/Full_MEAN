@@ -1,4 +1,5 @@
 .flex{
     display: flex;
-    border: 1px solid black;
+    background-color: darkgrey;
+    margin: 2.5%;
 }

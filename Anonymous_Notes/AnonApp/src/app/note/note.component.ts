@@ -12,16 +12,24 @@ export class NoteComponent implements OnInit {
     notes;
 
     constructor(private _NoteService: NoteService) {
-        this.getAll();
+        
     }
 
     ngOnInit() {
+        this.getAll();
     }
 
     onSubmit() {
+        // console.log("hitting the component service ");
+        // this._NoteService.create(this.note).subscribe(
+        //     note => 
+        // )
+        
         this._NoteService.create(this.note, (res) => {
-            this.getAll();
-            this.note = { note: "" };
+            // this.getAll();
+            console.log("NOTE: ", this.note);
+            
+            // this.note = { note: "" };
         })
     }
 

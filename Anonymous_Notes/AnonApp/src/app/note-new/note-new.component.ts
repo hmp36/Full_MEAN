@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Note } from '../note';
+// import { Note } from '../note';
 import { NoteService } from '../note.service';
 
 
@@ -13,11 +13,14 @@ export class NoteNewComponent implements OnInit {
 
     @Output() createNoteEvent = new EventEmitter();
 
-    newNote: Note = new Note;
+    newNote: any;
     errors: string[] = [];
     constructor(private _ns: NoteService) { }
 
     ngOnInit() {
+        this.newNote = {
+            note:""
+        };
     }
 
     createNote() {
@@ -33,7 +36,10 @@ export class NoteNewComponent implements OnInit {
                     }
                     console.log(this.errors);
                 } else {
-                    this.newNote = new Note();
+                    this.newNote = {
+                        note:""
+                    };
+
                     this.createNoteEvent.emit();
                 }
             }
