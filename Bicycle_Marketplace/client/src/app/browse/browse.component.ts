@@ -15,8 +15,9 @@ export class BrowseComponent implements OnInit {
    }
 
    ngOnInit() {
-        if(!this.us.isValid())
-            this.router.navigate(["/register"]);
-   }
-
+        if(!this.us.isValid()) this.router.navigate(["/register"]);
+        this.text = "";
+     
+      }
+      
 }
