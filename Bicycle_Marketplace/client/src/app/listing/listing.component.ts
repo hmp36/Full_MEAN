@@ -18,6 +18,8 @@ export class ListingComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.listing);console.log(this.user);
+    console.log("LISTING");
   }
 
   destroy() {
