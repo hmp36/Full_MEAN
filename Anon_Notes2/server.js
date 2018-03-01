@@ -1,27 +1,20 @@
-/********** EXPRESS **********/
-const express = require("express");
-const session = require("express-session");
-const app = express();
-const port = 8000;
+//*** Server.js (should not change besides Angular folder path name)
+let express = require("express");
+let bParse = require("body-parser");
+let mongoose = require("mongoose");
+let cookie = require("cookie");
+let bcrypt = require("bcrypt");
+let path = require("path");
+let app = express();
+let port = 8000;
+//Change this to the Angular path
+app.use(express.static(path.join(__dirname, '/client/AN2app/dist')));
+app.use(bParse.json());
+app.use(bParse.urlencoded({ extended: true }));
+app.listen(port, function () {
+    console.log("listening on port " + port);
+});
 
-/********** BODY PARSER **********/
-const bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-/********** STATIC FOLDER **********/
-app.use(express.static(__dirname + "/client/dist"));
-
-/********** MONGOOSE  **********/
-require('./server/config/mongoose.js');
-app.use(session({
-    secret: "eduardobaik",
-    resave: false,
-    saveUninitialized: true
-}))
-
-/********** ROUTES PATH **********/
-const route_setter = require("./server/config/routes.js")(app)
-
-/********** SERVER LISTEN **********/
-app.listen(port, () => console.log(`struggling on ${port}...`))
+require("./server/config/mongoose.js");
+require("./server/config/routes.js")(app);
+//*** End Server.js
