@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Http, Response} from '@angular/http';
+import { Http, Response } from '@angular/http';
 // tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-
 
 @Injectable()
 export class AppointmentService {

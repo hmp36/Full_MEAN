@@ -1,40 +1,26 @@
-import { Component, OnInit, NgModule } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from '../../server/controllers/user.service';
-import { Http } from '@angular/http';
-import { User } from '../../server/models/user';
-
-import { AppointmentService } from '../../server/controllers/appointment.service';
-import { Appointment } from '../../server/models/appointments';
-
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+import { AppointmentService } from '../appointment.service';
+import { Routes, Router, ActivatedRoute } from '@angular/router';
+import { User } from '../classes/user';
+import { Appointment } from '../classes/appointment';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-
-export class DashboardComponent implements OnInit {
-
-  user: R;
-  appointments: Appointment[];
-
-  constructor(
-    private _http: Http,
-    private _router: Router,
-    private _us: UserService,
-    private _appointmentService: AppointmentService
-
-
-  ) {
-  }
+export class HomeComponent implements OnInit {
+  private user: User;
+  private appointments: Array<Appointment> = [];
+  constructor(private _us: UserService, private _as: AppointmentService, private _router: Router) { }
 
   ngOnInit() {
     this._us.checkstatus()
       .then(user => this.user = user)
       .catch(err => this._router.navigateByUrl('/login'));
 
-    this._appointmentService.getAppointments()
+    this._as.getAppointments()
       .then(appointments => {
         this.appointments = appointments;
         for (const appointment of this.appointments) {
@@ -50,7 +36,7 @@ export class DashboardComponent implements OnInit {
       .then(response => this._router.navigateByUrl('/login'));
   }
   refresh(eventData) {
-    this._appointmentService.getAppointments()
+    this._as.getAppointments()
       .then(appointments => {
         this.appointments = appointments;
         for (const appointment of this.appointments) {
@@ -62,10 +48,4 @@ export class DashboardComponent implements OnInit {
       .catch(err => console.log(err));
   }
 }
-
-
-
-
-
-
 
