@@ -12,7 +12,7 @@ import { Routes, Router, ActivatedRoute } from '@angular/router';
 export class HomedashComponent implements OnInit {
   private datePipe = new DatePipe('en-US');
   private _appointments = [];
-  private display_appointments = [];
+  display_appointments = [];
   private searchfield = {
     value: ''
   };
@@ -73,6 +73,7 @@ export class HomedashComponent implements OnInit {
   constructor(private _as: AppointmentService, private _router: Router) { }
 
   ngOnInit() {
+    this.getAllAppointments();
   }
   delete(appointmentID) {
     this._as.delete(appointmentID)
@@ -84,7 +85,10 @@ export class HomedashComponent implements OnInit {
     this.display_appointments = this._appointments;
     this.searched = false;
   }
-
+getAllAppointments() {
+  this._as.getAppointments()
+    .then(result =>  this.display_appointments );
+}
   search() {
     this.searched = true;
     this.display_appointments = this._appointments.filter(appointment => {

@@ -30,4 +30,6 @@ export class UserService {
       .map((response: Response) => response.json())
       .toPromise();
   }
+
+
 }

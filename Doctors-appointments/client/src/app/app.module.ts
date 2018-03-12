@@ -10,6 +10,7 @@ import { UserService } from './user.service';
 import { AppointmentService } from './appointment.service';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     AddComponent,
     HomeComponent,
     LoginComponent,
-    HomedashComponent
+    HomedashComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
